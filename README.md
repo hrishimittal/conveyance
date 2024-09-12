@@ -34,6 +34,12 @@ Start the Rails server:
 
 You can see the app at http://localhost:3000.
 
+Run the test suite:
+```bash
+rspec
+```
+
+
 Refactoring
 ======
 
