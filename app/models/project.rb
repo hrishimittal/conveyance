@@ -20,7 +20,7 @@ class Project < ApplicationRecord
 
   def track_project_status_change
     self.project_changes.create(
-      field_name: 'status',
+      field_name: "status",
       value: status
     )
   end

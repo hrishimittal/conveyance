@@ -40,5 +40,4 @@ RSpec.describe Project, type: :model do
       }.not_to change(ProjectChange, :count)
     end
   end
-
 end

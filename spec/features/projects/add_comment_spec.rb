@@ -20,7 +20,7 @@ RSpec.feature "Add comment to project", type: :feature do
   scenario "User cannot add a comment when not logged in" do
     logout(:user)
     visit project_path(project)
-    
+
     expect(page).not_to have_selector("form#new_comment")
     expect(page).to have_content("To comment, please log in or sign up")
     expect(page).to have_link("log in", href: new_user_session_path)
