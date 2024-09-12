@@ -1,0 +1,13 @@
+<div class="mb-4 p-4 rounded-lg shadow-md <%= update.is_a?(Comment) ? 'bg-blue-100' : 'bg-red-50' %>">
+  <div class="font-base text-xs text-gray-600">
+    <%= update.created_at.strftime("%B %d, %Y at %I:%M %p") %>
+  </div>
+  <% if update.is_a?(Comment) %>
+    <%= render partial: "comments/comment", locals: {comment: update} %>
+  <% else %>
+    <div class="my-2">
+      <%= update.field_name.humanize %> was updated to 
+      <span class="bg-yellow-100 p-2"><%= Project.statuses[update.value] %></span>.
+    </div>
+  <% end %>
+</div>

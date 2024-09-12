@@ -1,12 +1,11 @@
 <div id="<%= dom_id project %>">
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Name:</strong>
+  <div class="text-gray-700 font-bold text-2xl">
     <%= project.name %>
-  </p>
+  </div>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Status:</strong>
-    <%= project.status %>
-  </p>
+  <div class="my-5 flex">
+    Current status: 
+    <span class="block font-medium mb-1 ml-2"><%= project.status_display %></span>
+  </div>
 
 </div>

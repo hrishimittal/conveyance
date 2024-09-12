@@ -19,7 +19,10 @@
   </head>
 
   <body>
-    <main class="container mx-auto mt-28 px-5 flex">
+    <main class="container mx-auto mt-28 px-5 max-w-4xl">
+      <header class="text-center mb-8">
+        <%= link_to "Conveyance", :root, class: "text-bold text-4xl" %>
+      </header>
       <%= yield %>
     </main>
   </body>

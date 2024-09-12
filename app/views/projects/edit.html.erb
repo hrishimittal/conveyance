@@ -4,5 +4,7 @@
   <%= render "form", project: @project %>
 
   <%= link_to "Show this project", @project, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-  <%= link_to "Back to projects", projects_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+  <div class="inline-block ml-2">
+    <%= button_to "Destroy this project", @project, method: :delete, class: "mt-2 rounded-lg py-3 text-white px-5 bg-red-500 font-medium", onclick: "return confirm('Are you sure?');" %>
+  </div>
 </div>

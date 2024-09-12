@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user!, only: %i[ create edit update destroy ]
+
   before_action :set_comment, only: %i[ show edit update destroy ]
 
   # GET /comments or /comments.json
@@ -21,12 +23,18 @@ class CommentsController < ApplicationController
 
   # POST /comments or /comments.json
   def create
-    @comment = Comment.new(comment_params)
+    @comment = current_user.comments.new(comment_params)
 
     respond_to do |format|
       if @comment.save
         format.html { redirect_to comment_url(@comment), notice: "Comment was successfully created." }
         format.json { render :show, status: :created, location: @comment }
+        format.turbo_stream do
+          render turbo_stream: [
+            turbo_stream.prepend("updates", partial: "projects/update", locals: { update: @comment }),
+            turbo_stream.update("new_comment", "")
+          ]
+        end
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @comment.errors, status: :unprocessable_entity }
