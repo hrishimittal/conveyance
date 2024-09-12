@@ -1,24 +1,46 @@
-# README
+# Conveyance
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a Ruby on Rails application that allows you to create projects and discuss them. Users can:
 
-Things you may want to cover:
+* view a project's conversation history, including status updates.
 
-* Ruby version
+* leave a comment
 
-* System dependencies
+* change the status of the project
 
-* Configuration
+To run this app on your machine, clone the repository and run the following commands on the command line:
 
-* Database creation
+Install the gems in the Gemfile:
+```bash
+bundle install
+```
 
-* Database initialization
+Create and migrate the database. This app uses PostgreSQL:
+```bash
+rails db:create
+rails db:migrate
+```
 
-* How to run the test suite
+Seed the database with some example data. See [db/seeds.rb](db/seeds.rb) to see a project with conversation history about this project.
 
-* Services (job queues, cache servers, search engines, etc.)
+```bash
+rails db:seed:replant
+```
 
-* Deployment instructions
+Start the Rails server:
+```bash
+./bin/dev
+```
 
-* ...
+You can see the app at http://localhost:3000.
+
+Refactoring
+======
+
+One part of this app that could be improved is to create a method or model for Project history. 
+
+At the moment, a project's history is created in the controller. 
+
+It would be better to move it to the Project model as a method or create a separate model (or PORO) called ProjectHistory which contains that logic. 
+
+That would make it easier to test and update in the future.
