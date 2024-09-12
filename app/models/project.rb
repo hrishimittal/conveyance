@@ -9,4 +9,13 @@ class Project < ApplicationRecord
     completed: "Completed",
     archived: "Archived"
   }, _prefix: true
+
+  after_save :track_project_status_change, if: -> { saved_change_to_status? }
+
+  def track_project_status_change
+    self.project_changes.create(
+      field_name: 'status',
+      value: status
+    )
+  end
 end
