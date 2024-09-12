@@ -12,6 +12,9 @@ class Project < ApplicationRecord
 
   after_save :track_project_status_change, if: -> { saved_change_to_status? }
 
+  def status_display
+    Project.statuses[status]
+  end
 
   private
 
